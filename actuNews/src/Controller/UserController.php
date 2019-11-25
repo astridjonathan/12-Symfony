@@ -7,25 +7,25 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MemberController extends AbstractController
+class UserController extends AbstractController
 {
 
     /**
-     * @Route("/login", methods={"GET"})
+     * @Route("/connexion.html",name="user_login", methods={"GET / POST"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login()
     {
-        return $this->render('member/login.html.twig');
+        return $this->render('user/login.html.twig');
     }
 
     /**
-     * @Route("/register", methods={"GET"})
+     * @Route("/inscription.html",name="user_register", methods={"GET / POST"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function register()
     {
-        return $this->render('member/register.html.twig');
+        return $this->render('user/register.html.twig');
     }
 
 }
