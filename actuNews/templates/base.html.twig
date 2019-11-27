@@ -16,9 +16,9 @@
     <main class="container">
         <div class="row">
             <div class="col">
-                {% include 'components/_nav.html.twig' %}
+                {{ render(controller('App\\Controller\\DefaultController::menu')) }}
                 {% block content %}{% endblock %}
-                {% include 'components/footer.html.twig' %}
+                {{ render(controller('App\\Controller\\DefaultController::footerMenu')) }}
             </div>
         </div>
     </main>
