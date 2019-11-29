@@ -10,9 +10,14 @@
     </div>
 
     <div class="container mx-auto ">
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="row ">
             <div class="col-md-6 offset-md-3 mx-auto" >
-                {{ form(formUser) }}
+                {{ form(form) }}
             </div>
         </div>
     </div>
