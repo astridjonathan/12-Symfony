@@ -1,31 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cacb2cf1-99ec-4821-9f0c-ca190cac3f9a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/test/validator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/articles/les-donnees-de-millions-d-utilisateurs-facebook-et-twitter-ont-ete-compromises-5de0186ba8b96.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/articles/ligue-des-champions-le-real-madrid-et-le-psg-un-bourgeois-et-son-voisin-nouveau-riche-5de012148d50c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/articles/militaires-tues-au-sahel-florence-parly-est-arrivee-au-mali-5de01751c368c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/articles/non-le-papier-n-est-pas-pret-de-se-faire-detroner-par-le-numerique-5de012da29d61.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/HelperTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/article/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/actuNews.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/actuNews.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/article.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/article.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="cacb2cf1-99ec-4821-9f0c-ca190cac3f9a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,15 +117,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
     </option>
   </component>
@@ -169,6 +146,7 @@
       <workItem from="1574857902211" duration="4000" />
       <workItem from="1574942857291" duration="6353000" />
       <workItem from="1574950319991" duration="16615000" />
+      <workItem from="1574971070988" duration="13000" />
     </task>
     <servers />
   </component>
