@@ -1,9 +1,5 @@
 <?php
-
-
 namespace App\Controller;
-
-
 trait HelperTrait
 {
     /**

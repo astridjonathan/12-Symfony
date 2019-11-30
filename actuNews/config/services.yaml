@@ -30,3 +30,4 @@ services:
     #Ajouter pour utiliser u.truncate
     Twig\Extra\String\StringExtension:
         tags: ['twig.extension']
+

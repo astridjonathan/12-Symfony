@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\User;
 use http\Client\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,7 +16,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function Sodium\add;
-
 class ArticleController extends AbstractController
 {
     use HelperTrait;
@@ -30,16 +28,14 @@ class ArticleController extends AbstractController
         #Création d'une catégorie
         $category= new Category();
         $category->setName('Economie')
-                 ->setAlias('economie');
-
+            ->setAlias('economie');
         #Création d'un utilsateur (journaliste)
         $user= new User();
         $user->setFirstname('Astrid')
-             ->setLastname('JONATHAN')
-             ->setEmail('astrid@actu.news')
-             ->setPassword('1234')
-             ->setRoles(['ROLE_JOURNALISTE']);
-
+            ->setLastname('JONATHAN')
+            ->setEmail('astrid@actu.news')
+            ->setPassword('1234')
+            ->setRoles(['ROLE_JOURNALISTE']);
         #Création d'un article
         $article = new Article();
         $article->setTitle('Transformation numérique')
@@ -48,7 +44,6 @@ class ArticleController extends AbstractController
             ->setImage('inf180_transfo_01.jpg')
             ->setCategory($category)
             ->setUser($user);
-
         /**
          * Récupération du Manager de Doctrine
          * ------------------------------------
@@ -60,7 +55,6 @@ class ArticleController extends AbstractController
          * Ici, doctrine va s'aider des annotations
          * pour gérer nos données.
          */
-
         $em=$this->getDoctrine()->getManager();
         #On précise ce que l'on souhaite sauvegarder
         $em->persist($category);
@@ -71,41 +65,38 @@ class ArticleController extends AbstractController
         #On retourne une réponse
         return new Response('Nouvel article: '. $article->getTitle());
     }
-
     /**
      * Formulaire permettant l'ajout d'un article
      * @Route("/creer-un-article", name="article_add")
+     * @Security("is_granted('ROLE_REPORTER')")
      * @return Response
      */
     public function addArticle(\Symfony\Component\HttpFoundation\Request $request)
     {
         #Création d'un nouvel article
         $article= new Article();
-
         #Récupérer un user en attendant user connecté
         $journaliste = $this->getDoctrine()
             ->getRepository(User::class)
             ->find(2);
-
         #On affecte le User à l'article
         $article->setUser($journaliste);
-
         #Création d'un formulaire
         $form = $this->createFormBuilder($article)
             #Titre de l'article
             ->add('title', TextType::class,[
-                    'required' =>true, #par defaut à true pas à mettre
-                    'label' => false,
-                    'attr' => [
-                        'placeholder' => 'Titre de l\'article'
-                    ]
-                ])
+                'required' =>true, #par defaut à true pas à mettre
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Titre de l\'article'
+                ]
+            ])
             #Category
             ->add('category', EntityType::class,[
                 'class'=> Category::class,
-                 'choice_label' => 'name',
+                'choice_label' => 'name',
                 'label' => false
-                ])
+            ])
             #Article's content
             ->add('content', TextareaType::class, [
                 'required'=>false,
@@ -128,16 +119,12 @@ class ArticleController extends AbstractController
             ])
             #Creates Form
             ->getForm();
-
         #Pemet à SF de gérer les données réçues
         $form->handleRequest($request);
-
         #Si le formulaire est soumis et que c'est validé
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var UploadedFile $imageFile */
             $imageFile = $form['image']->getData();
-
             if ($imageFile) {
                 $newFilename = $this->slugify($article->getTitle()) . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 try {
@@ -150,18 +137,14 @@ class ArticleController extends AbstractController
                 }
                 $article->setImage($newFilename);
             } #fin upload image
-
             #Génération de l'alias de l'article
             $article->setAlias($this->slugify($article->getTitle()));
-
             #Sauvegarde dans la BDD
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
-
             #Notification flash
             $this->addFlash('notice', 'Félicitations votre article est en ligne !');
-
             #Redirection
             return $this->redirectToRoute('default_article',[
                 'category' => $article->getCategory()->getAlias(),
@@ -169,7 +152,6 @@ class ArticleController extends AbstractController
                 'id'=>$article->getId()
             ]);
         }
-
         #Transmission du formulaire à la vue
         return $this->render('article/form.html.twig',[
             'form' => $form->createView()

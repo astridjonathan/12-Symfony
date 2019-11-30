@@ -5,37 +5,46 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, errorPath="email", message="Ce compte existe déjà")
  */
-class User
+class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\NotBlank(message="Vous avez oublié le prénom")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\NotBlank(message="Vous avez oublié le nom")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=80, unique=true)
+     * @Assert\NotBlank(message="Vous avez oublié l'email")
+     * @Assert\Email(message = "L'email '{{ value }}' n'est pas un format valide.")
+     *
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous avez oublié le mot de passe")
      */
     private $password;
 
@@ -183,5 +192,28 @@ class User
         }
 
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+            return $this->email;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
     }
 }
